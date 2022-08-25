@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under Stars</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <img src="galaxy.jpg" alt="Space image" class="hero-img">
+  
+  <main class="main">
+    <section class="intro">
+      <In class="intro--text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt quia eum quos, cupiditate commodi temporibus corporis incidunt assumenda eaque. In enim est minus beatae perspiciatis inventore voluptas hic molestias?</p>
+    </section>
+
+    <section class="form-container">
+      <form action="" method="post"> <!-- autocomplete="on"-->
+
+        <fieldset>
+          <legend>Your journey through space starts here!</legend>
+
+          <label for="first-name">First Name</label>
+          <input type="text" required id="first=name" name="first-name" autocomplete="first name" class="first-name-input">
+
+          <label for="email">Email address</label>
+          <input type="email" required id="email" name="email" autocomplete="email" class="email-input"> <!-- 3 hints for the browser that this is an email input so that it can autofill  + autocomplete as well (most important)-->
+          <label for="password">Password</label>
+          <input type="password" required minlength="8" id="password" name="password" autocomplete="new-password">
+
+
+          <label for="last-name">Last Name</label>
+          <input type="text" required id="last=name" name="last-name" autocomplete="Last name" class="last-name-input">
+
+          <label for="phone-number">Phone number</label>
+          <input type="text" required id="phone-number" name="phone-number" autocomplete="tel" class="phone-number-input">
+          
+          <label for="confirm-password">Confirm password</label>
+          <input type="password" required minlength="8" id="confirm-password" name="confirm-password" autocomplete="new-password" class="confirm-password-input">
+
+        </fieldset>
+
+      </form>
+    </section>
+
+    <section class="cta-account">
+      <div class="account">
+        <button class="account--create-btn">Create Account</button>
+        <p class="account--prompt">Already have an account? <a class="account--login-link"href="#">Log in</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
