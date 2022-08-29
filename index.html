@@ -55,20 +55,42 @@
                 <p class="email-error invisible"></p>
               </div>  
 
+              <div class="password-input-container">
+                <label for="password">Password (*)</label>
+                <input type="password" required minlength="8" id="password" name="password" autocomplete="new-password" class="password-input">
+                <i class="fa-solid fa-circle-check password-check password-check-success hidden"></i>
+                <i class="fa-solid fa-circle-xmark password-check password-check-error hidden"></i>
+                <p class="password-error invisible"></p>
+              </div>
 
-              <label for="password">Password (*)</label>
-              <input type="password" required minlength="8" id="password" name="password" autocomplete="new-password">
             </div>
 
             <div class="form--col col">
-              <label for="last-name">Last Name (*)</label>
-              <input type="text" required id="last=name" name="last-name" autocomplete="Last name" class="last-name-input">
 
-              <label for="phone-number">Phone number (*)</label>
-              <input type="text" required id="phone-number" name="phone-number" autocomplete="tel" class="phone-number-input">
-              
-              <label for="confirm-password">Confirm password (*)</label>
-              <input type="password" required minlength="8" id="confirm-password" name="confirm-password" autocomplete="new-password" class="confirm-password-input">
+              <div class="last-name-input-container">
+                <label for="last-name">Last Name (*)</label>
+                <input type="text" required id="last=name" name="last-name" autocomplete="Last name" class="last-name-input">
+                <i class="fa-solid fa-circle-check last-name-check last-name-check-success hidden"></i>
+                <i class="fa-solid fa-circle-xmark last-name-check last-name-check-error hidden"></i>
+                <p class="last-name-error invisible"></p>                
+              </div>
+
+              <div class="phone-number-input-container">
+                <label for="phone-number">Phone number (*)</label>
+                <input type="text" required id="phone-number" name="phone-number" autocomplete="tel" class="phone-number-input">
+                <i class="fa-solid fa-circle-check phone-number-check phone-number-check-success hidden"></i>
+                <i class="fa-solid fa-circle-xmark phone-number-check phone-number-check-error hidden"></i>
+                <p class="phone-number-error invisible"></p>   
+              </div>
+
+              <div class="confirm-password-input-container">
+                <label for="confirm-password">Confirm password (*)</label>
+                <input type="password" required minlength="8" id="confirm-password" name="confirm-password" autocomplete="new-password" class="confirm-password-input">
+                <i class="fa-solid fa-circle-check confirm-password-check confirm-password-check-success hidden"></i>
+                <i class="fa-solid fa-circle-xmark confirm-password-check confirm-password-check-error hidden"></i>
+                <p class="confirm-password-error invisible"></p>   
+              </div>
+
             </div>
             
           </div>

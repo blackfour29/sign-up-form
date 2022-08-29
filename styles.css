@@ -72,6 +72,7 @@ main{
   transform: translate(-50%, 0);
   color: #fff;
   z-index: 10;
+  white-space: nowrap;
 }
 
 .image-source a{
@@ -162,12 +163,17 @@ input:focus{
 
 .form--required-fields{
   margin-left: 4rem;
+  margin-top: 0.5rem;
 }
 
 /* First name input here */
 
 .first-name-input-container,
-.email-address-input-container{
+.email-address-input-container,
+.password-input-container,
+.last-name-input-container,
+.phone-number-input-container,
+.confirm-password-input-container{
   display: flex;
   flex-direction: column;
   position: relative;
@@ -225,24 +231,118 @@ input:focus{
 }
 
 
+/* Password input here */
 
-
-
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-
-.account--create-btn{
-  border: none;
-  background-color: var(--clr-primary);
-  color: white;
-  padding: 0.75rem 2.5rem;
-  border-radius: 10px;
-  margin: 2rem 0 1rem 4rem;
-  cursor: pointer;
+.password-check{
+  position: absolute;
+  top: 24px;
+  right: 10px;
 }
+
+.password-check-error{
+  color:rgb(224, 26, 26);
+  font-size: 1.25rem;
+}
+
+.password-check-success{
+  color:rgb(113, 224, 76);
+  font-size: 1.25rem;
+}
+
+.password-error{
+  margin: 0.5rem 0 1rem 0;
+  color: rgb(255, 145, 145);
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+
+/* last name input here */
+
+.last-name-check{
+  position: absolute;
+  top: 24px;
+  right: 10px;
+}
+
+.last-name-check-error{
+  color:rgb(224, 26, 26);
+  font-size: 1.25rem;
+}
+
+.last-name-check-success{
+  color:rgb(113, 224, 76);
+  font-size: 1.25rem;
+}
+
+.last-name-error{
+  margin: 0.5rem 0 1rem 0;
+  color: rgb(255, 145, 145);
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+/* Phone number input here */
+
+.phone-number-check{
+  position: absolute;
+  top: 24px;
+  right: 10px;
+}
+
+.phone-number-check-error{
+  color:rgb(224, 26, 26);
+  font-size: 1.25rem;
+}
+
+.phone-number-check-success{
+  color:rgb(113, 224, 76);
+  font-size: 1.25rem;
+}
+
+.phone-number-error{
+  margin: 0.5rem 0 1rem 0;
+  color: rgb(255, 145, 145);
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+/* Confirm password input */
+
+
+.confirm-password-check{
+  position: absolute;
+  top: 24px;
+  right: 10px;
+}
+
+.confirm-password-check-error{
+  color:rgb(224, 26, 26);
+  font-size: 1.25rem;
+}
+
+.confirm-password-check-success{
+  color:rgb(113, 224, 76);
+  font-size: 1.25rem;
+}
+
+.confirm-password-error{
+  margin: 0.5rem 0 1rem 0;
+  color: rgb(255, 145, 145);
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
 
 .account--prompt{
   margin: 0 0 1rem 4rem;
@@ -255,7 +355,7 @@ input:focus{
   color: black;
   padding: 0.75rem 2.5rem;
   border-radius: 10px;
-  margin: 2rem 0 1rem 4rem;
+  margin: 1rem 0 1rem 4rem;
   cursor: pointer;
   font-weight: 600;
 }
