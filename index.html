@@ -6,51 +6,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Under Stars</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-  <img src="galaxy.jpg" alt="Space image" class="hero-img">
-  
+<body class="row">
+
+    
+    <div class="image-container">
+      <div class="overlay">
+      </div>
+      <p class="overlay--text">Visit today!</p>
+      <p class="image-source">Photo by <a href="https://unsplash.com/@omgitsyeshi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Yeshi Kangrang</a> on <a href="https://unsplash.com/s/photos/city?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+       
+     <img src="city.jpg" alt="Space image" class="hero-img">
+    </div>
+   
+   
+
   <main class="main">
     <section class="intro">
-      <In class="intro--text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt quia eum quos, cupiditate commodi temporibus corporis incidunt assumenda eaque. In enim est minus beatae perspiciatis inventore voluptas hic molestias?</p>
+      <p class="intro--text">Don't be scared to walk alone.<br> Don't be scared to <span class="intro--significance">like</span> it</p>
     </section>
 
     <section class="form-container">
       <form action="" method="post"> <!-- autocomplete="on"-->
 
-        <fieldset>
-          <legend>Your journey through space starts here!</legend>
+          <p class="form--message">Start your journey today!</p>
 
-          <label for="first-name">First Name</label>
-          <input type="text" required id="first=name" name="first-name" autocomplete="first name" class="first-name-input">
+          <div class="row">
+            <div class="form--col col">
+              
+              <div class="first-name-input-container">
+                <label for="first-name">First Name (*)</label>
+                <input type="text" required id="first=name" name="first-name" autocomplete="name" class="first-name-input">
+                <i class="fa-solid fa-circle-check first-name-check first-name-check-success hidden"></i>
+                <i class="fa-solid fa-circle-xmark first-name-check first-name-check-error hidden"></i>
+                <p class="first-name-error invisible"></p>
+              </div>
 
-          <label for="email">Email address</label>
-          <input type="email" required id="email" name="email" autocomplete="email" class="email-input"> <!-- 3 hints for the browser that this is an email input so that it can autofill  + autocomplete as well (most important)-->
-          <label for="password">Password</label>
-          <input type="password" required minlength="8" id="password" name="password" autocomplete="new-password">
+              <div class="email-address-input-container">
+                <label for="email">Email address (*)</label>
+                <input type="email" required id="email" name="email" autocomplete="email" class="email-input"> <!-- 3 hints for the browser that this is an email input so that it can autofill  + autocomplete as well (most important)-->
+                <i class="fa-solid fa-circle-check email-check email-check-success hidden"></i>
+                <i class="fa-solid fa-circle-xmark email-check email-check-error hidden"></i>
+                <p class="email-error invisible"></p>
+              </div>  
 
 
-          <label for="last-name">Last Name</label>
-          <input type="text" required id="last=name" name="last-name" autocomplete="Last name" class="last-name-input">
+              <label for="password">Password (*)</label>
+              <input type="password" required minlength="8" id="password" name="password" autocomplete="new-password">
+            </div>
 
-          <label for="phone-number">Phone number</label>
-          <input type="text" required id="phone-number" name="phone-number" autocomplete="tel" class="phone-number-input">
+            <div class="form--col col">
+              <label for="last-name">Last Name (*)</label>
+              <input type="text" required id="last=name" name="last-name" autocomplete="Last name" class="last-name-input">
+
+              <label for="phone-number">Phone number (*)</label>
+              <input type="text" required id="phone-number" name="phone-number" autocomplete="tel" class="phone-number-input">
+              
+              <label for="confirm-password">Confirm password (*)</label>
+              <input type="password" required minlength="8" id="confirm-password" name="confirm-password" autocomplete="new-password" class="confirm-password-input">
+            </div>
+            
+          </div>
           
-          <label for="confirm-password">Confirm password</label>
-          <input type="password" required minlength="8" id="confirm-password" name="confirm-password" autocomplete="new-password" class="confirm-password-input">
+          <p class="form--required-fields">* Required fields</p>
 
-        </fieldset>
+          <button class="account--create-btn">Create Account</button>
+          <p class="account--prompt">Already have an account? <a class="account--login-link"href="#">Log in</a></p>
 
       </form>
     </section>
 
-    <section class="cta-account">
+    <!-- <section class="cta-account">
       <div class="account">
         <button class="account--create-btn">Create Account</button>
         <p class="account--prompt">Already have an account? <a class="account--login-link"href="#">Log in</a></p>
       </div>
-    </section>
+    </section> -->
   </main>
 
   <script src="script.js"></script>
