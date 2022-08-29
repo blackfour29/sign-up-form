@@ -10,23 +10,40 @@ const emailError = document.querySelector(".email-error");
 
 
 firstNameInput.addEventListener("blur", validateName);
-firstNameInput.addEventListener("input", checkValidity);
+firstNameInput.addEventListener("input", checkValidityAggressive);
 
 emailInput.addEventListener("blur", validateEmail);
+emailInput.addEventListener("input", checkValidityAggressive);
+
+
+
 
 let nameChanged = false;
+let emailChanged = false;
 
-function checkValidity(event)
+function checkValidityAggressive(event)
 {
   if(nameChanged)
   {
     if(event.target.value.trim().length === 0)
     {
-      updateFirstNameUI("error");
+      updateFormUI("error", "first name");
     }
     else
     {
-      updateFirstNameUI("success");
+      updateFormUI("success", "first name");
+    }
+  }
+
+  if(emailChanged)
+  {
+    if(!event.target.value.includes("@") || !event.target.value.includes(".com"))
+    {
+      updateFormUI("error", "email")
+    }
+    else
+    {
+      updateFormUI("success", "email");
     }
   }
 
@@ -40,27 +57,24 @@ function validateName(event)
   
   if(name.length === 0)
   {
-    updateFirstNameUI("error");
+    updateFormUI("error", "first name");
   }
   else
   {
-    updateFirstNameUI("success");
+    updateFormUI("success", "first name");
   }
 }
 
 function validateEmail(event)
 {
+  emailChanged = true;
   if(!event.target.value.includes("@") || !event.target.value.includes(".com"))
   {
-    displayError(emailError, "Invalid email address");
-    emailCheckError.classList.remove("hidden");
-    emailCheckSuccess.classList.add("hidden");
+    updateFormUI("error", "email")
   }
   else
   {
-    emailCheckSuccess.classList.remove("hidden");
-    emailCheckError.classList.add("hidden");
-    emailError.classList.add("invisible");
+    updateFormUI("success", "email");
   }
 }
 
@@ -72,18 +86,37 @@ function displayError(element, message)
 }
 
 
-function updateFirstNameUI(type)
+function updateFormUI(type, element)
 {
   if(type === "success")
   {
-    firstNameCheckSuccess.classList.remove("hidden");
-    firstNameCheckError.classList.add("hidden");
-    firstNameError.classList.add("invisible");
+    if(element === "first name")
+    {
+      firstNameCheckSuccess.classList.remove("hidden");
+      firstNameCheckError.classList.add("hidden");
+      firstNameError.classList.add("invisible");
+    }
+    else if(element === "email")
+    {
+      emailCheckSuccess.classList.remove("hidden");
+      emailCheckError.classList.add("hidden");
+      emailError.classList.add("invisible");
+    }
+  
   }
   else if(type === "error")
   {
-    firstNameCheckError.classList.remove("hidden");
-    firstNameCheckSuccess.classList.add("hidden");
-    displayError(firstNameError, "First name cannot be blank");
+    if(element === "first name")
+    {
+      firstNameCheckError.classList.remove("hidden");
+      firstNameCheckSuccess.classList.add("hidden");
+      displayError(firstNameError, "First name cannot be blank");
+    }
+    else if(element === "email")
+    {
+      displayError(emailError, "Invalid email address");
+      emailCheckError.classList.remove("hidden");
+      emailCheckSuccess.classList.add("hidden");
+    }
   }
 }
