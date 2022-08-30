@@ -1,3 +1,5 @@
+const form = document.querySelector(".create-account-form");
+
 const firstNameInput = document.querySelector(".first-name-input");
 const firstNameCheckSuccess = document.querySelector(".first-name-check-success");
 const firstNameCheckError = document.querySelector(".first-name-check-error");
@@ -28,6 +30,19 @@ const confirmPasswordCheckSuccess = document.querySelector(".confirm-password-ch
 const confirmPasswordCheckError = document.querySelector(".confirm-password-check-error");
 const confirmPasswordError = document.querySelector(".confirm-password-error");
 
+let phonePattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/ ;
+
+let nameChanged = false;
+let emailChanged = false;
+let passwordChanged = false;
+let lastNameChanged = false;
+let phoneNumberChanged = false;
+let confirmPasswordChanged = false;
+
+form.addEventListener("submit", function(event){
+  event.preventDefault();
+  console.log("Form completed succesfully");
+})
 
 firstNameInput.addEventListener("blur", validateName);
 firstNameInput.addEventListener("input", checkValidityAggressive);
@@ -47,16 +62,8 @@ phoneNumberInput.addEventListener("input", checkValidityAggressive);
 confirmPasswordInput.addEventListener("blur", validateConfirmPassword);
 confirmPasswordInput.addEventListener("input", checkValidityAggressive);
 
-let phonePattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/ ;
 
-let nameChanged = false;
-let emailChanged = false;
-let passwordChanged = false;
-let lastNameChanged = false;
-let phoneNumberChanged = false;
-let confirmPasswordChanged = false;
-
-function checkValidityAggressive(event)
+function checkValidityAggressive()
 {
   if(nameChanged)
   {
@@ -120,7 +127,7 @@ function checkValidityAggressive(event)
 
   if(confirmPasswordChanged)
   {
-    if(confirmPasswordInput.value != passwordInput.value)
+    if(confirmPasswordInput.value != passwordInput.value || confirmPasswordInput.value.trim().length === 0)
     {
       updateFormUI("error", "confirm password");
     }
@@ -129,101 +136,13 @@ function checkValidityAggressive(event)
       updateFormUI("success", "confirm password");
     }
   }
-
 }
-
-function validateConfirmPassword(event)
-{
-  confirmPasswordChanged = true;
-  
-  if(event.target.value != passwordInput.value)
-  {
-    updateFormUI("error", "confirm password");
-  }
-  else
-  {
-    updateFormUI("success", "confirm password");
-  }
-}
-
-function validatePhoneNumber(event)
-{
-  phoneNumberChanged = true;
-
-
-  if((event.target.value.match(phonePattern)))
-  {
-    updateFormUI("success", "phone number")
-  }
-  else
-  {
-    updateFormUI("error", "phone number")
-  }
-}
-
-function validateLastName(event)
-{
-  lastNameChanged = true;
-  let lastName = event.target.value.trim();
-  
-  if(lastName.length === 0)
-  {
-    updateFormUI("error", "last name");
-  }
-  else
-  {
-    updateFormUI("success", "last name");
-  }
-}
-
-function validatePassword(event)
-{
-  passwordChanged = true;
-  if(event.target.value.length <= 7)
-  {
-    updateFormUI("error", "password");
-  }
-  else
-  {
-    updateFormUI("success", "password");
-  }
-}
-
-function validateName(event)
-{
-  nameChanged = true;
-  let name = event.target.value.trim();
-  
-  if(name.length === 0)
-  {
-    updateFormUI("error", "first name");
-  }
-  else
-  {
-    updateFormUI("success", "first name");
-  }
-}
-
-function validateEmail(event)
-{
-  emailChanged = true;
-  if(!event.target.value.includes("@") || !event.target.value.includes(".com"))
-  {
-    updateFormUI("error", "email")
-  }
-  else
-  {
-    updateFormUI("success", "email");
-  }
-}
-
 
 function displayError(element, message)
 {
   element.textContent = message;
   element.classList.remove("invisible");
 }
-
 
 function updateFormUI(type, element)
 {
@@ -265,7 +184,6 @@ function updateFormUI(type, element)
       confirmPasswordCheckError.classList.add("hidden");
       confirmPasswordError.classList.add("invisible");
     }
-  
   }
   else if(type === "error")
   {
