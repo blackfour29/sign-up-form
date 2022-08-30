@@ -107,8 +107,8 @@ section{
   margin-left: 4rem;
 }
 
-.form--col + .form--col{
-  margin-left: 6rem;
+.form--col + .form--col{ /* first form--col after form--col */
+  margin: 0 2rem 0 6rem;
 }
 
 .form--message{
