@@ -1,9 +1,8 @@
-function validateName(event)
+function validateName()
 {
-  nameChanged = true;
-  let name = event.target.value.trim();
+  firstNameChanged = true;
   
-  if(name.length === 0)
+  if(!validName())
   {
     updateFormUI("error", "first name");
   }
@@ -13,10 +12,10 @@ function validateName(event)
   }
 }
 
-function validateEmail(event)
+function validateEmail()
 {
   emailChanged = true;
-  if(!event.target.value.includes("@") || !event.target.value.includes(".com"))
+  if( !validEmail() )
   {
     updateFormUI("error", "email")
   }
@@ -26,12 +25,12 @@ function validateEmail(event)
   }
 }
 
-function validatePassword(event)
+function validatePassword()
 {
   passwordChanged = true;
-  if(event.target.value.length <= 7)
+  if(!validPassword())
   {
-    updateFormUI("error", "password");
+    updateFormUI("error", "password"); 
   }
   else
   {
@@ -39,12 +38,11 @@ function validatePassword(event)
   }
 }
 
-function validateLastName(event)
+function validateLastName()
 {
   lastNameChanged = true;
-  let lastName = event.target.value.trim();
   
-  if(lastName.length === 0)
+  if(!validLastName())
   {
     updateFormUI("error", "last name");
   }
@@ -54,25 +52,25 @@ function validateLastName(event)
   }
 }
 
-function validatePhoneNumber(event)
+function validatePhoneNumber()
 {
   phoneNumberChanged = true;
 
-  if((event.target.value.match(phonePattern)))
+  if(!validPhoneNumber())
   {
-    updateFormUI("success", "phone number")
+    updateFormUI("error", "phone number");
   }
   else
   {
-    updateFormUI("error", "phone number")
+    updateFormUI("success", "phone number");
   }
 }
 
-function validateConfirmPassword(event)
+function validateConfirmPassword()
 {
   confirmPasswordChanged = true;
   
-  if(event.target.value != passwordInput.value || event.target.value.trim().length === 0)
+  if(!validConfirmPassword())
   {
     updateFormUI("error", "confirm password");
   }
@@ -80,4 +78,61 @@ function validateConfirmPassword(event)
   {
     updateFormUI("success", "confirm password");
   }
+}
+
+
+function validName()
+{
+  if(firstNameInput.value.trim().length===0)
+  {
+    return 0;
+  }
+  return 1;
+}
+
+function validEmail()
+{
+  if(!emailInput.value.includes("@") || !emailInput.value.includes(".com"))
+  {
+    return 0;
+  }
+  return 1;
+}
+
+function validPassword()
+{
+  if(passwordInput.value.length <= 7)
+  {
+    return 0;
+  }
+  return 1;
+}
+
+function validLastName()
+{
+  if(lastNameInput.value.trim().length === 0)
+  {
+    return 0;
+  }
+  return 1;
+}
+
+function validPhoneNumber()
+{
+  let match = phoneNumberInput.value.match(phonePattern); // returns an array or null
+  
+  if(match === null )
+  {
+    return 0;
+  }
+  return 1;
+}
+
+function validConfirmPassword()
+{
+  if(confirmPasswordInput.value != passwordInput.value || confirmPasswordInput.value.trim().length === 0)
+  {
+    return 0;
+  }
+  return 1;
 }

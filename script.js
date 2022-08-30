@@ -30,9 +30,9 @@ const confirmPasswordCheckSuccess = document.querySelector(".confirm-password-ch
 const confirmPasswordCheckError = document.querySelector(".confirm-password-check-error");
 const confirmPasswordError = document.querySelector(".confirm-password-error");
 
-let phonePattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/ ;
+let phonePattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 
-let nameChanged = false;
+let firstNameChanged = false;
 let emailChanged = false;
 let passwordChanged = false;
 let lastNameChanged = false;
@@ -41,33 +41,48 @@ let confirmPasswordChanged = false;
 
 form.addEventListener("submit", function(event){
   event.preventDefault();
-  console.log("Form completed succesfully");
-})
+  if(validName() && validEmail() && validPassword() && validLastName() && validPhoneNumber() && validConfirmPassword() )
+  {
+    console.log("Form completed successfully");
+  }
+});
 
 firstNameInput.addEventListener("blur", validateName);
-firstNameInput.addEventListener("input", checkValidityAggressive);
+firstNameInput.addEventListener("input", function(){
+  checkValidityAggressive(firstNameInput);
+});
 
 emailInput.addEventListener("blur", validateEmail);
-emailInput.addEventListener("input", checkValidityAggressive);
+emailInput.addEventListener("input", function(){
+  checkValidityAggressive(emailInput);
+});
 
 passwordInput.addEventListener("blur", validatePassword);
-passwordInput.addEventListener("input", checkValidityAggressive);
+passwordInput.addEventListener("input", function(){
+  checkValidityAggressive(passwordInput);
+});
 
 lastNameInput.addEventListener("blur", validateLastName);
-lastNameInput.addEventListener("input", checkValidityAggressive);
+lastNameInput.addEventListener("input", function(){
+  checkValidityAggressive(lastNameInput);
+});
 
 phoneNumberInput.addEventListener("blur", validatePhoneNumber);
-phoneNumberInput.addEventListener("input", checkValidityAggressive);
+phoneNumberInput.addEventListener("input", function(){
+  checkValidityAggressive(phoneNumberInput);
+});
 
 confirmPasswordInput.addEventListener("blur", validateConfirmPassword);
-confirmPasswordInput.addEventListener("input", checkValidityAggressive);
+confirmPasswordInput.addEventListener("input", function(){
+  checkValidityAggressive(confirmPasswordInput);
+});
 
 
-function checkValidityAggressive()
+function checkValidityAggressive(element)
 {
-  if(nameChanged)
+  if( element === firstNameInput && firstNameChanged)
   {
-    if(firstNameInput.value.trim().length === 0)
+    if( !validName() )
     {
       updateFormUI("error", "first name");
     }
@@ -76,10 +91,10 @@ function checkValidityAggressive()
       updateFormUI("success", "first name");
     }
   }
-
-  if(emailChanged)
+  
+  else if(element === emailInput && emailChanged)
   {
-    if(!emailInput.value.includes("@") || !emailInput.value.includes(".com"))
+    if( !validEmail() )
     {
       updateFormUI("error", "email")
     }
@@ -89,9 +104,9 @@ function checkValidityAggressive()
     }
   }
 
-  if(passwordChanged)
+  else if(element === passwordInput && passwordChanged)
   {
-    if(passwordInput.value.length <= 7)
+    if(!validPassword())
     {
       updateFormUI("error", "password")
     }
@@ -101,9 +116,9 @@ function checkValidityAggressive()
     }
   }
 
-  if(lastNameChanged)
+  else if( element === lastNameInput && lastNameChanged)
   {
-    if(lastNameInput.value.trim().length === 0)
+    if( !validLastName() )
     {
       updateFormUI("error", "last name");
     }
@@ -113,9 +128,9 @@ function checkValidityAggressive()
     }
   }
 
-  if(phoneNumberChanged)
+  else if(element === phoneNumberInput && phoneNumberChanged)
   {
-    if((phoneNumberInput.value.match(phonePattern)))
+    if(validPhoneNumber())
     {
       updateFormUI("success", "phone number")
     }
@@ -125,9 +140,9 @@ function checkValidityAggressive()
     }
   }
 
-  if(confirmPasswordChanged)
+  else if( element === confirmPasswordInput && confirmPasswordChanged)
   {
-    if(confirmPasswordInput.value != passwordInput.value || confirmPasswordInput.value.trim().length === 0)
+    if(!validConfirmPassword())
     {
       updateFormUI("error", "confirm password");
     }
